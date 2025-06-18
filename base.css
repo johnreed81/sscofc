@@ -148,15 +148,34 @@ footer {
     color: #27ae60; /* A nice green for calendar links */
     text-decoration: none;
     font-weight: bold;
-    display: inline-block; /* Allows line breaks and margin */
+    display: flex; /* Use flexbox to align icon and text */
+    align-items: center; /* Vertically center icon and text */
+    padding: 2px 0; /* Small padding for clickable area */
 }
 
 .add-to-calendar-list a:hover {
     text-decoration: underline;
 }
 
+.calendar-icon {
+    font-size: 1.2em; /* Make icon slightly larger than text */
+    margin-right: 8px; /* Space between icon and text */
+    color: #3498db; /* A blue color for the icon */
+    /* Using Unicode characters for icons */
+    display: inline-block; /* Ensure proper spacing */
+    width: 1em; /* Fixed width to prevent text shifting */
+    text-align: center; /* Center the icon */
+}
 
-/* --- NEW/UPDATED: Styles for Confluence-style Expando --- */
+/* Default icon for single events (a simple calendar/date) */
+.calendar-icon::before {
+    content: "\1F4C5"; /* Unicode for 📅 (calendar emoji) */
+}
+
+/* Icon for recurring events (a repeating symbol) */
+.recurring-event .calendar-icon::before {
+    content: "\1F501"; /* Unicode for 🔄 (clockwise vertical arrows emoji) */
+}
 
 .expando-header {
     background-color: #f0f0f0; /* Light gray background */
@@ -185,7 +204,7 @@ footer {
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
     border-left: 8px solid #555; /* Right-pointing arrow by default */
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.7s ease-in-out;
 }
 
 /* Rotate arrow when header is 'expanded' (content is visible) */
