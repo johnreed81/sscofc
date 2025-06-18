@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="base.css">
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v23.0&appId=3143866149102561"></script>
+
     <div class="container">
         <header>
             <h1>Southside Church of Christ</h1>
@@ -118,14 +121,33 @@
             </div>
         </section>
 
-        <section class="section">
+        <!--<section class="section">
             <h2>Contact Us</h2>
             <div class="contact-info">
                 <p><strong>Phone:</strong> <a href="tel:+14175811047">(417) 581-1047</a></p>
                 <p><strong>Email:</strong> <a href="mailto:preacherphil@gmail.com">PreacherPhil@gmail.com</a></p>
             </div>
+            
+        </section>-->
+
+        <section class="section">
+            <h2>Connect with Us on Facebook</h2>
             <div class="social-link">
                 <a href="https://www.facebook.com/OzarkSouthsidechurchofChrist" target="_blank">Visit Our Facebook Page</a>
+            </div>
+            <div class="facebook-feed-container">
+                <div class="fb-page"
+                    data-href="https://www.facebook.com/OzarkSouthsidechurchofChrist"
+                    data-tabs="timeline"
+                    data-width="500" data-height=""
+                    data-small-header="false"
+                    data-adapt-container-width="true"
+                    data-hide-cover="false"
+                    data-show-facepile="true">
+                    <blockquote cite="https://www.facebook.com/OzarkSouthsidechurchofChrist" class="fb-xfbml-parse-ignore">
+                        <a href="https://www.facebook.com/OzarkSouthsidechurchofChrist">Southside Church of Christ</a>
+                    </blockquote>
+                </div>
             </div>
         </section>
 
@@ -137,7 +159,7 @@
     <script>
         function toggleExpando(contentId) {
             var contentElement = document.getElementById(contentId);
-            var headerElement = contentElement.previousElementSibling; // Assuming the header is the element directly before the content
+            var headerElement = contentElement.previousElementSibling;
 
             // Toggle the 'collapsed' class on the content
             contentElement.classList.toggle('collapsed');

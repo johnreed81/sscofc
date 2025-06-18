@@ -101,11 +101,12 @@ header p {
 
 .social-link {
     margin-top: 20px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
 .social-link a {
-    display: inline-block;
+    display: inline-block; /* Essential for text-align: center on parent to work */
     background-color: #3498db;
     color: white;
     padding: 10px 20px;
@@ -117,6 +118,16 @@ header p {
 
 .social-link a:hover {
     background-color: #2980b9;
+}
+
+.facebook-feed-container {
+    display: flex; /* Enables flexbox for centering children */
+    justify-content: center; /* Horizontally centers the flex item (the FB plugin) */
+    width: 100%; /* Make the container span the full width of its parent (.section) */
+    /*max-width: 900px; /* Optional: Constrain the max width of the *container* if needed, though data-width on fb-page also acts as a max */
+    margin: 0 auto; /* Adds vertical spacing and centers the container itself horizontally */
+    overflow: hidden; /* Important for handling potential overflow of embedded content */
+    box-sizing: border-box; /* Ensures padding/border are included in width calculation */
 }
 
 footer {
