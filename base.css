@@ -1,0 +1,229 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 960px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+header h1 {
+    color: #2c3e50;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #7f8c8d;
+    font-size: 1.1em;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section h2 {
+    color: #34495e;
+    font-size: 2em;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.event-list {
+    list-style: none;
+    padding: 0;
+}
+
+.event-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+.event-item h3 {
+    color: #2980b9;
+    margin-top: 0;
+    font-size: 1.6em;
+}
+
+.event-item p {
+    margin-bottom: 10px;
+}
+
+.event-item p:last-child {
+    margin-bottom: 0;
+}
+
+.contact-info p {
+    margin-bottom: 8px;
+}
+
+.contact-info a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.map-container {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures the iframe corners are rounded */
+}
+
+.map-container iframe {
+    display: block; /* Remove extra space below iframe */
+    width: 100%;
+}
+
+.social-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.social-link a {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.social-link a:hover {
+    background-color: #2980b9;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    color: #7f8c8d;
+    font-size: 0.9em;
+}
+
+/* Styles for Add to Calendar links */
+.add-to-calendar {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.add-to-calendar-list {
+    list-style: none; /* Remove bullets */
+    padding: 0;
+    margin-top: 10px; /* Space above the list */
+}
+
+.add-to-calendar-list li {
+    margin-bottom: 5px; /* Spacing between list items */
+}
+
+.add-to-calendar-list a {
+    color: #27ae60; /* A nice green for calendar links */
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block; /* Allows line breaks and margin */
+}
+
+.add-to-calendar-list a:hover {
+    text-decoration: underline;
+}
+
+
+/* --- NEW/UPDATED: Styles for Confluence-style Expando --- */
+
+.expando-header {
+    background-color: #f0f0f0; /* Light gray background */
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+    margin-top: 15px; /* Space above the expando */
+    border-radius: 5px;
+    display: flex; /* For aligning icon and text */
+    align-items: center;
+    user-select: none; /* Prevent text selection on double-click */
+}
+
+.expando-header:hover {
+    background-color: #e0e0e0;
+}
+
+/* Style for the arrow icon */
+.expando-icon {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-right: 10px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 8px solid #555; /* Right-pointing arrow by default */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Rotate arrow when header is 'expanded' (content is visible) */
+.expando-header.expanded .expando-icon {
+    transform: rotate(90deg); /* Down-pointing arrow */
+}
+
+/* Styles for Expando Content (the image container) */
+.expando-content {
+    max-height: 0; /* Starts collapsed */
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: max-height 0.7s ease-in-out, opacity 0.7s ease-in-out, visibility 0.7s ease-in-out;
+    padding-top: 0; /* Ensure no initial padding pushes content down */
+    padding-bottom: 0; /* Ensure no initial padding pushes content down */
+    border: 1px solid #ddd; /* Match header border */
+    border-top: none; /* No top border, visually connects to header */
+    border-radius: 0 0 5px 5px; /* Rounded corners only at bottom */
+    background-color: #f9f9f9; /* Slightly different background for content */
+    /* Remove padding: 0 15px here and apply it within the :not(.collapsed) state */
+}
+
+/* When the 'collapsed' class is NOT present (i.e., it's expanded) */
+.expando-content:not(.collapsed) {
+    max-height: 1000px; /* A sufficiently large value to accommodate your image and text */
+    opacity: 1;
+    visibility: visible;
+    padding-top: 15px; /* Add space above the image when visible */
+    padding-bottom: 15px; /* Add space below the image when visible */
+    padding-left: 15px; /* Apply horizontal padding here */
+    padding-right: 15px; /* Apply horizontal padding here */
+}
+
+/* Image inside the expando content */
+.expando-content img {
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensures image doesn't have extra space below it */
+    margin: 0 auto; /* Center the image */
+}
