@@ -58,6 +58,42 @@ header p {
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.event-icon {
+    flex-shrink: 0; /* Prevents the icon from shrinking */
+    width: 350px; /* Desired width of your icon */
+    /*height: 60px; /* Desired height of your icon */
+    display: flex; /* Use flex to center the image if needed */
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.event-icon img {
+    max-width: 100%; /* Ensure image fits within its container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below image */
+}
+
+.event-details {
+    flex-grow: 1; /* Allows the event details to take up remaining space */
+    /* No specific width needed, it will grow */
+}
+
+/* Ensure other styles within event-details still apply correctly */
+.event-details h3 {
+    color: #2980b9;
+    margin-top: 0;
+    font-size: 1.6em;
+}
+
+.event-details p {
+    margin-bottom: 10px;
 }
 
 .event-item h3 {
