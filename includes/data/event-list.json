@@ -1,0 +1,126 @@
+[
+    {
+      "id": "vbs2025",
+      "event-image": "includes/img/20250622_VBS_kickoff.jpg",
+      "event-title": "Vacation Bible School",
+      "event-dates-display": "Sunday June 22 - Wednesday 25, 2025",
+      "event-time-display": "6:00 PM - 8:00 PM (each night); except Sunday starts at 5pm",
+      "event-location": "Southside Church of Christ",
+      "event-plug": "Children are invited to join a week of adventure and discovery to learn about Jesus and His amazing love",
+      "calendar-entries": [
+        {
+          "text": "VBS Kickoff (Sun at 5pm)",
+          "start": "2025-06-22T17:00:00",
+          "end": "2025-06-22T18:00:00",
+          "details": "Exciting kickoff event for VBS!",
+          "recurrence": null
+        },
+        {
+          "text": "VBS Day 1 (Sun at 6pm)",
+          "start": "2025-06-22T18:00:00",
+          "end": "2025-06-22T20:00:00",
+          "details": "An exciting week of fun, games, and learning about faith for kids!",
+          "recurrence": null
+        },
+        {
+          "text": "VBS Day 2 (Mon at 6pm)",
+          "start": "2025-06-23T18:00:00",
+          "end": "2025-06-23T20:00:00",
+          "details": "An exciting week of fun, games, and learning about faith for kids!",
+          "recurrence": null
+        },
+        {
+          "text": "VBS Day 3 (Tue at 6pm)",
+          "start": "2025-06-24T18:00:00",
+          "end": "2025-06-24T20:00:00",
+          "details": "An exciting week of fun, games, and learning about faith for kids!",
+          "recurrence": null
+        },
+        {
+          "text": "VBS Day 4 (Wed at 6pm)",
+          "start": "2025-06-25T18:00:00",
+          "end": "2025-06-25T20:00:00",
+          "details": "An exciting week of fun, games, and learning about faith for kids!",
+          "recurrence": null
+        }
+      ],
+      "expando": null
+    },
+    {
+      "id": "sundayBibleClass",
+      "event-image": "includes/img/sunday-morning-bible-class.png",
+      "event-title": "Sunday Morning Bible Class",
+      "event-dates-display": "Sundays",
+      "event-time-display": "9:30 AM",
+      "event-location": "Church Classrooms",
+      "event-plug": "In-depth study of the Bible for all ages",
+      "calendar-entries": [
+        {
+          "text": "Sunday Bible Class",
+          "start": "2025-06-22T09:30:00",
+          "end": "2025-06-22T10:30:00",
+          "details": "In-depth study of the Bible for all ages",
+          "location_google": null,
+          "recurrence": "RRULE:FREQ=WEEKLY;BYDAY=SU"
+        }
+      ],
+      "expando": null
+    },
+    {
+      "id": "sundayWorship",
+      "event-image": "includes/img/Sunday_Worship_Service_1030-1280x720.jpg",
+      "event-title": "Sunday Morning Worship",
+      "event-dates-display": "Sundays",
+      "event-time-display": "10:30 AM",
+      "event-location": "Church Sanctuary",
+      "event-plug": "Join us for uplifting worship and a message from God's Word",
+      "calendar-entries": [
+        {
+          "text": "Sunday Morning Worship",
+          "start": "2025-06-22T10:30:00",
+          "end": "2025-06-22T12:00:00",
+          "details": "Join us for uplifting worship and a message from God's Word",
+          "recurrence": "RRULE:FREQ=WEEKLY;BYDAY=SU"
+        }
+      ],
+      "expando": null
+    },
+    {
+      "id": "sundayEveningService",
+      "event-image": "includes/img/sunday-worship-service-bg-illustration-with-christian-cross-vector.jpg",
+      "event-title": "Sunday Evening Service",
+      "event-dates-display": "Sundays",
+      "event-time-display": "6:00 PM",
+      "event-location": "Church Sanctuary",
+      "event-plug": "Join us for uplifting worship and a message from God's Word",
+      "calendar-entries": [
+        {
+          "text": "Sunday Evening Service",
+          "start": "2025-06-22T18:00:00",
+          "end": "2025-06-22T19:00:00",
+          "details": "Join us for an uplifting message and fellowship",
+          "recurrence": "RRULE:FREQ=WEEKLY;BYDAY=SU"
+        }
+      ],
+      "expando": null
+    },
+    {
+      "id": "wednesdayBibleClass",
+      "event-image": "includes/img/Wednesday-Night-Bible-Study.jpeg",
+      "event-title": "Wednesday Evening Bible Class",
+      "event-dates-display": "Wednesdays",
+      "event-time-display": "7:00 PM",
+      "event-location": "Church Classrooms",
+      "event-plug": "A mid-week opportunity for prayer and Bible study",
+      "calendar-entries": [
+        {
+          "text": "Wednesday Bible Class",
+          "start": "2025-06-25T19:00:00",
+          "end": "2025-06-25T20:30:00",
+          "details": "A mid-week opportunity for prayer and Bible study",
+          "recurrence": "RRULE:FREQ=WEEKLY;BYDAY=WE"
+        }
+      ],
+      "expando": null
+    }
+  ]
