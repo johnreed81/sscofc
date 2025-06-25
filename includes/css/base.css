@@ -106,8 +106,36 @@ header p {
     margin-bottom: 10px;
 }
 
+.event-text {
+    font-weight: bolder !important;
+    font-size: 1.2em;
+    text-decoration-line: blink;
+}
+
 .event-item p:last-child {
     margin-bottom: 0;
+}
+
+/* Styling for past non-recurring events */
+.event-item.past-event {
+    opacity: 0.6; /* Make it slightly faded */
+}
+
+.event-item.past-event .event-details h3,
+.event-item.past-event .event-details p {
+    text-decoration: line-through; /* Apply strikethrough to text elements */
+}
+
+.event-item .add-to-calendar-list li a.past-calendar-entry {
+    pointer-events: none; /* Disables clicking on the link */
+    cursor: default;     /* Changes cursor to default */
+    text-decoration: line-through;
+}
+
+/* Ensure images are not struck through, but can be faded with opacity on parent */
+.event-item .event-icon img,
+.event-item .expando-content img {
+    text-decoration: none; /* Remove any inherited text-decoration */
 }
 
 .contact-info p {

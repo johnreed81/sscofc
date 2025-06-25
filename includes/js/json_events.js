@@ -80,7 +80,46 @@ document.addEventListener('DOMContentLoaded', function() {
     function renderEvent(eventData) {
         const li = document.createElement('li');
         li.className = 'event-item';
-        li.id = `event-${eventData.id}`; // Add an ID for potential future use
+        li.id = `event-${eventData.id}`;
+
+        // Determine if the entire event-item should be marked as past-event
+        let isOverallPastEvent = false;
+        const hasRecurrence = eventData['calendar-entries'].some(entry => entry.recurrence);
+
+        if (!hasRecurrence && eventData['calendar-entries'].length > 0) {
+            // Get current time in UTC for comparison
+            const now = new Date();
+            const currentOffsetMinutes = now.getTimezoneOffset();
+            const nowUtcMillis = now.getTime() + (currentOffsetMinutes * 60 * 1000);
+            const nowUtcDate = new Date(nowUtcMillis);
+
+            // Check if ALL non-recurring calendar entries are in the past
+            // If even one entry is NOT in the past, the overall event is not past.
+            isOverallPastEvent = eventData['calendar-entries'].every(entry => {
+                const entryStartTime = new Date(entry.start);
+                const entryOffsetMinutes = entryStartTime.getTimezoneOffset();
+                const entryStartUtcMillis = entryStartTime.getTime() + (entryOffsetMinutes * 60 * 1000);
+                const entryStartUtcDate = new Date(entryStartUtcMillis);
+                return entryStartUtcDate < nowUtcDate;
+            });
+        }
+
+        if (isOverallPastEvent) {
+            li.classList.add('past-event');
+        }
+
+        let expandoHtml = '';
+        if (eventData.expando) {
+            expandoHtml = `
+                <div class="expando-header" onclick="toggleExpando('${eventData.expando.id}')">
+                    <span class="expando-icon"></span> ${eventData.expando.header_text}
+                </div>
+                <div id="${eventData.expando.id}" class="expando-content collapsed">
+                    <img src="${eventData.expando.image_src}" alt="${eventData.expando.alt}">
+                    <p style="text-align: center; font-style: italic; font-size: 0.9em; margin-top: 5px;">${eventData.expando.caption}</p>
+                </div>
+            `;
+        }
 
         li.innerHTML = `
             <div class="event-icon">
@@ -94,23 +133,36 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p>${eventData['event-plug']}</p>
                 <hr>
                 <ul class="add-to-calendar-list">
-                    ${eventData['calendar-entries'].map(entry => `
-                        <li>
-                            <a href="${buildGoogleCalendarUrl(entry)}" target="_blank" class="${entry.recurrence ? 'recurring-event' : ''}">
-                                <span class="calendar-icon"></span>Add ${entry.text} to Google Calendar
-                            </a>
-                        </li>
-                    `).join('')}
+                    ${eventData['calendar-entries'].map(entry => {
+                        // Check if individual calendar entry is in the past
+                        let isEntryPast = false;
+                        if (!entry.recurrence) { // Only check non-recurring entries
+                            const entryStartTime = new Date(entry.start);
+                            const now = new Date();
+                            const currentOffsetMinutes = now.getTimezoneOffset();
+                            const nowUtcMillis = now.getTime() + (currentOffsetMinutes * 60 * 1000);
+                            const nowUtcDate = new Date(nowUtcMillis);
+
+                            const entryOffsetMinutes = entryStartTime.getTimezoneOffset();
+                            const entryStartUtcMillis = entryStartTime.getTime() + (entryOffsetMinutes * 60 * 1000);
+                            const entryStartUtcDate = new Date(entryStartUtcMillis);
+
+                            if (entryStartUtcDate < nowUtcDate) {
+                                isEntryPast = true;
+                            }
+                        }
+                        const entryClass = `${entry.recurrence ? 'recurring-event' : ''} ${isEntryPast ? 'past-calendar-entry' : ''}`;
+
+                        return `
+                            <li>
+                                <a href="${buildGoogleCalendarUrl(entry)}" target="_blank" class="${entryClass.trim()}">
+                                    <span>Add <span class="calendar-icon"></span><span class="event-text">${entry.text}</span> to Google Calendar</span>
+                                </a>
+                            </li>
+                        `;
+                    }).join('')}
                 </ul>
-                ${eventData.expando ? `
-                    <div class="expando-header" onclick="toggleExpando('${eventData.expando.id}')">
-                        <span class="expando-icon"></span> ${eventData.expando.header_text}
-                    </div>
-                    <div id="${eventData.expando.id}" class="expando-content collapsed">
-                        <img src="${eventData.expando.image_src}" alt="${eventData.expando.image_alt}">
-                        <p style="text-align: center; font-style: italic; font-size: 0.9em; margin-top: 5px;">${eventData.expando.caption}</p>
-                    </div>
-                ` : ''}
+                ${expandoHtml}
             </div>
         `;
         return li;
@@ -135,9 +187,13 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => {
             console.error('Error fetching event data:', error);
-            eventList.innerHTML = '<p>Unable to load events at this time. Please check back later.</p>';
+            if (loadingMessage) {
+                loadingMessage.innerHTML = '<p>Unable to load events at this time. Please check back later.</p>';
+            } else {
+                eventList.innerHTML = '<p>Unable to load events at this time. Please check back later.</p>';
+            }
         });
-});
+    });
 
 // The existing toggleExpando function should remain global
 function toggleExpando(contentId) {
