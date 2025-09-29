@@ -184,14 +184,47 @@ header p {
     background-color: #2980b9;
 }
 
-.facebook-feed-container {
-    display: flex; /* Enables flexbox for centering children */
-    justify-content: center; /* Horizontally centers the flex item (the FB plugin) */
-    width: 100%; /* Make the container span the full width of its parent (.section) */
-    /*max-width: 900px; /* Optional: Constrain the max width of the *container* if needed, though data-width on fb-page also acts as a max */
-    margin: 0 auto; /* Adds vertical spacing and centers the container itself horizontally */
-    overflow: hidden; /* Important for handling potential overflow of embedded content */
-    box-sizing: border-box; /* Ensures padding/border are included in width calculation */
+/* Facebook Section Styling (no change) */
+.facebook-section {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.facebook-section h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.facebook-link-container {
+    display: inline-block;
+}
+
+.facebook-link {
+    display: flex;
+    align-items: center;
+    background-color: #4267B2; /* Facebook blue */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.facebook-link:hover {
+    background-color: #365899; /* Darker blue on hover */
+    text-decoration: none;
+}
+
+/* Updated CSS for the SVG icon */
+.facebook-icon-svg {
+    width: 24px; /* Adjust size of the SVG icon */
+    height: 24px;
+    margin-right: 10px; /* Space between icon and text */
+    /* If the fill attribute is not set directly on the SVG, you can set it here */
+    /* fill: white; */
 }
 
 footer {
